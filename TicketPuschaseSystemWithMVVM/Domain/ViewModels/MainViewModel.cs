@@ -15,6 +15,19 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
     {
 
         public ObservableCollection<string> MyItemsForCities { get; set; }
+        public ObservableCollection<string> MyItemsForSchedules { get; set; }
+        public ObservableCollection<string> MyItemsForAirplanes { get; set; }
+
+
+
+        private string _mySelectedItemForSchedules;
+
+        public string MySelectedItemForSchedules
+        {
+            get { return _mySelectedItemForSchedules; }
+            set { _mySelectedItemForSchedules = value; OnPropertyChanged(); }
+        }
+
 
         private string _mySelectedItemForCities;
         public string MySelectedItemForCities
@@ -23,29 +36,40 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
             set { _mySelectedItemForCities = value; OnPropertyChanged(); }
         }
 
+        private string _mySelectedItemForAirplanes;
+
+        public string MySelectedItemForAirplanes
+        {
+            get { return _mySelectedItemForAirplanes; }
+            set { _mySelectedItemForAirplanes = value; OnPropertyChanged(); }
+        }
+
+
 
 
 
         public RelayCommand Minimize_Btn { get; set; }
         public RelayCommand Close_Btn { get; set; }
         public RelayCommand CityChangedCommand { get; set; }
+        public RelayCommand ScheduleChangedCommand { get; set; }
 
 
 
         public MainViewModel()
         {
             MyItemsForCities = new ObservableCollection<string>();
+            MyItemsForSchedules = new ObservableCollection<string>();
+            MyItemsForAirplanes = new ObservableCollection<string>();
 
             using (var context = new TicketDBEntities())
             {
                 var result = new ObservableCollection<City>(context.Cities.ToList());
-                
+
                 foreach (var item in result)
                 {
                     MyItemsForCities.Add(item.Name);
                 }
 
-                MySelectedItemForCities = MyItemsForCities[0];
             }
 
 
@@ -64,13 +88,62 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 
             CityChangedCommand = new RelayCommand((o) =>
             {
-                MessageBox.Show(MySelectedItemForCities);
+                using (var context = new TicketDBEntities())
+                {
+                    var city = context.Cities.FirstOrDefault(c => c.Name == MySelectedItemForCities);
+                    var cityid = city.Id;
 
-                //using (resource)
-                //{
-                //
-                //}
+
+                    var schedules = context.ShowAllScheduleForCity(cityid).ToList();
+
+
+                    if (MyItemsForSchedules.Count > 0)
+                    {
+                        MyItemsForSchedules.Clear();
+                        MySelectedItemForSchedules = string.Empty;
+                    }
+
+                    if (MyItemsForAirplanes.Count > 0)
+                    {
+                        MyItemsForAirplanes.Clear();
+                        MySelectedItemForAirplanes = string.Empty;
+                    }
+
+                    foreach (var item in schedules)
+                    {
+                        MyItemsForSchedules.Add(item.Value.ToShortDateString());
+                    }
+                }
             });
+
+
+            ScheduleChangedCommand = new RelayCommand((o) =>
+            {
+                using (var context = new TicketDBEntities())
+                {
+                    if (MySelectedItemForSchedules != null)
+                    {
+                        var date = DateTime.Parse(MySelectedItemForSchedules);
+                        var schedule = context.Schedules.FirstOrDefault(s => s.StartDateTime == date);
+                        var scheduleId = schedule.Id;
+
+                        var airplanes = context.ShowAllAirplaneForSchedule(scheduleId).ToList();
+
+                        if (MyItemsForAirplanes.Count > 0)
+                        {
+                            MyItemsForAirplanes.Clear();
+                            MySelectedItemForSchedules = string.Empty;
+                        }
+
+                        foreach (var item in airplanes)
+                        {
+                            MyItemsForAirplanes.Add(item);
+                        }
+
+                    }
+                }
+            });
+
         }
     }
 }

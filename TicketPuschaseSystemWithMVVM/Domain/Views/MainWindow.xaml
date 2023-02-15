@@ -213,6 +213,8 @@
                                 <ComboBox Grid.Row="1"
                                           Name="AirplanesCombo"
                                           Grid.Column="1"
+                                          ItemsSource="{Binding MyItemsForAirplanes}" 
+                                          SelectedItem="{Binding MySelectedItemForAirplanes}"
                                           Style="{StaticResource  ComboStyle}"
                                          >
                                     <i:Interaction.Triggers>
@@ -238,6 +240,8 @@
                                 <ComboBox Grid.Row="1"
                                           Name="SchedulesCombo"
                                           Grid.Column="0"
+                                          ItemsSource="{Binding MyItemsForSchedules}" 
+                                          SelectedItem="{Binding MySelectedItemForSchedules}"
                                           Style="{StaticResource ComboStyle}"
                                          >
                                     <i:Interaction.Triggers>

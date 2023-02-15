@@ -179,3 +179,41 @@ CREATE TABLE Tickets(
 
 GO
 
+CREATE PROCEDURE ShowAllCities
+AS
+BEGIN
+
+	SELECT C.Name
+	FROM Cities AS C
+
+END
+
+EXEC ShowAllCities
+
+CREATE PROCEDURE ShowAllScheduleForCity
+@cityId int
+AS
+BEGIN
+	SELECT S.StartDateTime 
+	FROM Schedules AS S
+	WHERE S.CityId = @cityId
+END
+
+
+
+CREATE PROCEDURE ShowAllAirplaneForSchedule
+@ScheduleId int
+AS 
+BEGIN 
+	SELECT A.Name
+	FROM Airplanes AS A
+	WHERE A.ScheduleId = @ScheduleId
+END
+
+select * from Cities
+select * from Schedules
+
+EXEC ShowAllScheduleForCity 10
+
+exec ShowAllAirplaneForSchedule 8
+
