@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +73,39 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Commads\RelayCommand.cs" />
+    <Compile Include="Domain\Entities\Airplane.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\City.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\Passenger.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\Pilot.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\Schedule.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\Ticket.cs">
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\TicketModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TicketModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\TicketModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TicketModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Entities\TicketModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TicketModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Domain\ViewModels\BaseViewModel.cs" />
     <Compile Include="Domain\ViewModels\MainViewModel.cs" />
     <Compile Include="Domain\Views\MainWindow.xaml.cs">
@@ -105,6 +147,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Domain\Entities\TicketModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TicketModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Domain\Entities\TicketModel.edmx.diagram">
+      <DependentUpon>TicketModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -118,6 +168,22 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Purchase.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Domain\Entities\TicketModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TicketModel.edmx</DependentUpon>
+      <LastGenOutput>TicketModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Domain\Entities\TicketModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TicketModel.edmx</DependentUpon>
+      <LastGenOutput>TicketModel.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

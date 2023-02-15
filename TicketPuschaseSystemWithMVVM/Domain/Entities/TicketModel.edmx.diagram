@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="12d3de65677a40e1ae12eb91effda589" Name="Diagram1">
+        <EntityTypeShape EntityType="TicketDBModel.Airplane" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketDBModel.City" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketDBModel.Passenger" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketDBModel.Pilot" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketDBModel.Schedule" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TicketDBModel.Ticket" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="TicketDBModel.FK__Airplanes__Pilot__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Airplanes__Sched__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__Airplan__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Schedules__CityI__44FF419A" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__CityId__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__Passeng__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__Schedul__5DCAEF64" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
