@@ -9,7 +9,7 @@
         Height="800"
         Width="800"
         WindowStyle="None" 
-        Name="TicketPuschase"
+        Name="Mainwindow"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
@@ -119,7 +119,6 @@
                         Cursor="Hand"
                         Grid.Column="2"
                         Command="{Binding Close_Btn}"
-                        CommandParameter="{Binding ElementName=Mainwindow}"
                         >
 
                         <Button.Style>
@@ -162,6 +161,9 @@
                         </Grid.ColumnDefinitions>
 
                         <!-- Combobox -->
+                        <Border Grid.Column="0"
+                                BorderBrush="Black"
+                                BorderThickness="5 5 0 5"/>
                         <Grid Grid.Column="0" >
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="2*"/>
@@ -229,8 +231,29 @@
                         </Grid>                        
                         
                         <!-- Pilot Info -->
-                        <Grid Grid.Column="1" Background="Red">
-                            
+                        <Border Grid.Column="1" 
+                                BorderBrush="Black"
+                                BorderThickness="5"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="2*"/>
+                                <RowDefinition Height="2*"/>
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Style="{StaticResource tboxStyle}"
+                                       Text="Pilot Info"
+                                       />
+
+                            <TextBox Name="pilotname_txt"
+                                     Grid.Row="1"
+                                     Style="{StaticResource txt_style}"
+                                     />
+
+                            <TextBox Name="pilotsurname_txt"
+                                     Grid.Row="2"
+                                     Style="{StaticResource txt_style}"
+                                     />
                         </Grid>
                     </Grid >
 
