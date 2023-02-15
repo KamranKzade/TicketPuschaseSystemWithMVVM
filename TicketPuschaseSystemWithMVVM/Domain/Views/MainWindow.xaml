@@ -204,7 +204,7 @@
                                          >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
-                                            <i:InvokeCommandAction Command="{Binding CityChangedCommand}" />
+                                            <i:InvokeCommandAction Command="{Binding CityChangedCommand}" CommandParameter="{Binding ElementName=btn}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ComboBox>
@@ -219,7 +219,7 @@
                                          >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
-                                            <i:InvokeCommandAction Command="{Binding AirplaneChangedCommand}" />
+                                            <i:InvokeCommandAction Command="{Binding AirplaneChangedCommand}" CommandParameter="{Binding ElementName=btn}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </ComboBox>
@@ -283,6 +283,8 @@
                     </Grid >
 
                     <Button Grid.Row="1"
+                            IsEnabled="False"
+                            Name="btn"
                             Style="{StaticResource btnStyle}"
                             Content="Puschase"
                             />

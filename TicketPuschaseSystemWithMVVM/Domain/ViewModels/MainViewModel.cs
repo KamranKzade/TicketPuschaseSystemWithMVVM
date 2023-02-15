@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using TicketPuschaseSystemWithMVVM.Commads;
 using TicketPuschaseSystemWithMVVM.Domain.Entities;
 
@@ -52,6 +53,7 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
         public RelayCommand Close_Btn { get; set; }
         public RelayCommand CityChangedCommand { get; set; }
         public RelayCommand ScheduleChangedCommand { get; set; }
+        public RelayCommand AirplaneChangedCommand { get; set; }
 
 
 
@@ -88,6 +90,7 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 
             CityChangedCommand = new RelayCommand((o) =>
             {
+                var btn = o as Button;
                 using (var context = new TicketDBEntities())
                 {
                     var city = context.Cities.FirstOrDefault(c => c.Name == MySelectedItemForCities);
@@ -112,6 +115,11 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
                     foreach (var item in schedules)
                     {
                         MyItemsForSchedules.Add(item.Value.ToShortDateString());
+                    }
+
+                    if (MyItemsForAirplanes.Count == 0)
+                    {
+                        btn.IsEnabled = false;
                     }
                 }
             });
@@ -142,6 +150,18 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 
                     }
                 }
+            });
+
+
+            AirplaneChangedCommand = new RelayCommand((o) =>
+            {
+                var btn = o as Button;
+
+                if (MyItemsForAirplanes != null)
+                    btn.IsEnabled = true;
+                else
+                    btn.IsEnabled = false;
+
             });
 
         }
