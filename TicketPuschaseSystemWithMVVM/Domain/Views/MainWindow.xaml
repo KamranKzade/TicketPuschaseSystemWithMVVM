@@ -246,7 +246,8 @@
                                          >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
-                                            <i:InvokeCommandAction Command="{Binding ScheduleChangedCommand}" />
+                                            <i:InvokeCommandAction Command="{Binding ScheduleChangedCommand}"
+                                                                   CommandParameter="{Binding ElementName=myGrid}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                     </ComboBox>
@@ -259,7 +260,7 @@
                         <Border Grid.Column="1" 
                                 BorderBrush="Black"
                                 BorderThickness="5"/>
-                        <Grid Grid.Column="1">
+                        <Grid Grid.Column="1" Name="myGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
                                 <RowDefinition Height="2*"/>
@@ -272,11 +273,15 @@
 
                             <TextBox Name="pilotname_txt"
                                      Grid.Row="1"
+                                     IsEnabled="False"
+                                     Text="{Binding PilotName}"
                                      Style="{StaticResource txt_style}"
                                      />
 
                             <TextBox Name="pilotsurname_txt"
                                      Grid.Row="2"
+                                     IsEnabled="False"
+                                     Text="{Binding PilotSurname}"
                                      Style="{StaticResource txt_style}"
                                      />
                         </Grid>

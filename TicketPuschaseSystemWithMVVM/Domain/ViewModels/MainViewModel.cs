@@ -46,6 +46,22 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
         }
 
 
+        private string _pilotName;
+
+        public string PilotName
+        {
+            get { return _pilotName; }
+            set { _pilotName = value; OnPropertyChanged(); }
+        }
+
+        private string _pilotSurname;
+
+        public string PilotSurname
+        {
+            get { return _pilotSurname; }
+            set { _pilotSurname = value; OnPropertyChanged(); }
+        }
+
 
 
 
@@ -104,6 +120,9 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
                     {
                         MyItemsForSchedules.Clear();
                         MySelectedItemForSchedules = string.Empty;
+
+                        PilotName = string.Empty;
+                        PilotSurname = string.Empty;
                     }
 
                     if (MyItemsForAirplanes.Count > 0)
@@ -127,6 +146,13 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 
             ScheduleChangedCommand = new RelayCommand((o) =>
             {
+
+                if (PilotName != null && PilotSurname != null)
+                {
+                    PilotName = null;
+                    PilotSurname = null;
+                }
+
                 using (var context = new TicketDBEntities())
                 {
                     if (MySelectedItemForSchedules != null)
@@ -157,10 +183,22 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
             {
                 var btn = o as Button;
 
+
                 if (MyItemsForAirplanes != null)
                     btn.IsEnabled = true;
                 else
                     btn.IsEnabled = false;
+
+                using (var context = new TicketDBEntities())
+                {
+                    var airplanes = context.Airplanes.FirstOrDefault(a => a.Name == MySelectedItemForAirplanes);
+                    if (airplanes != null)
+                    {
+                        var pilot = airplanes.Pilot;
+                        PilotName = pilot.Name;
+                        PilotSurname = pilot.Surname;
+                    }
+                }
 
             });
 
