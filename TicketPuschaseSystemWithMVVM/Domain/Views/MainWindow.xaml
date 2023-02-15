@@ -3,7 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TicketPuschaseSystemWithMVVM"
+        xmlns:local="clr-namespace:TicketPuschaseSystemWithMVVM" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="Ticket Puschase"
         Height="800"
@@ -196,16 +197,30 @@
 
                                 <ComboBox Grid.Row="1"
                                           Name="CitiesCombo"
+                                          ItemsSource="{Binding MyItemsForCities}" 
+                                          SelectedItem="{Binding MySelectedItemForCities}"
                                           Grid.Column="0"
                                           Style="{StaticResource ComboStyle}"
-                                         />
+                                         >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding CityChangedCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ComboBox>
 
 
                                 <ComboBox Grid.Row="1"
                                           Name="AirplanesCombo"
                                           Grid.Column="1"
                                           Style="{StaticResource  ComboStyle}"
-                                         />
+                                         >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding AirplaneChangedCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ComboBox>
                             </Grid>
 
                             <Grid Grid.Row="1">
@@ -224,7 +239,13 @@
                                           Name="SchedulesCombo"
                                           Grid.Column="0"
                                           Style="{StaticResource ComboStyle}"
-                                         />
+                                         >
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding ScheduleChangedCommand}" />
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                    </ComboBox>
 
                             </Grid>
                             

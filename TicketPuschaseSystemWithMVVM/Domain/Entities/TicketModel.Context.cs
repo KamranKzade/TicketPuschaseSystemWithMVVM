@@ -12,6 +12,8 @@ namespace TicketPuschaseSystemWithMVVM.Domain.Entities
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class TicketDBEntities : DbContext
     {
@@ -31,5 +33,28 @@ namespace TicketPuschaseSystemWithMVVM.Domain.Entities
         public virtual DbSet<Pilot> Pilots { get; set; }
         public virtual DbSet<Schedule> Schedules { get; set; }
         public virtual DbSet<Ticket> Tickets { get; set; }
+    
+        public virtual ObjectResult<string> ShowAllAirplaneForSchedule(Nullable<int> scheduleId)
+        {
+            var scheduleIdParameter = scheduleId.HasValue ?
+                new ObjectParameter("ScheduleId", scheduleId) :
+                new ObjectParameter("ScheduleId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ShowAllAirplaneForSchedule", scheduleIdParameter);
+        }
+    
+        public virtual ObjectResult<string> ShowAllCities()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<string>("ShowAllCities");
+        }
+    
+        public virtual ObjectResult<Nullable<System.DateTime>> ShowAllScheduleForCity(Nullable<int> cityId)
+        {
+            var cityIdParameter = cityId.HasValue ?
+                new ObjectParameter("cityId", cityId) :
+                new ObjectParameter("cityId", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<System.DateTime>>("ShowAllScheduleForCity", cityIdParameter);
+        }
     }
 }

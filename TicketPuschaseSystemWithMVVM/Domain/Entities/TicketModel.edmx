@@ -150,6 +150,13 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="ShowAllAirplaneForSchedule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ScheduleId" Type="int" Mode="In" />
+        </Function>
+        <Function Name="ShowAllCities" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="ShowAllScheduleForCity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cityId" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="TicketDBModelStoreContainer">
           <EntitySet Name="Airplanes" EntityType="Self.Airplanes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
@@ -385,6 +392,13 @@
             <End Role="Schedules" EntitySet="Schedules" />
             <End Role="Tickets" EntitySet="Tickets" />
           </AssociationSet>
+          <FunctionImport Name="ShowAllAirplaneForSchedule" ReturnType="Collection(String)">
+            <Parameter Name="ScheduleId" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="ShowAllCities" ReturnType="Collection(String)" />
+          <FunctionImport Name="ShowAllScheduleForCity" ReturnType="Collection(DateTime)">
+            <Parameter Name="cityId" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
@@ -451,6 +465,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="ShowAllAirplaneForSchedule" FunctionName="TicketDBModel.Store.ShowAllAirplaneForSchedule" />
+          <FunctionImportMapping FunctionImportName="ShowAllCities" FunctionName="TicketDBModel.Store.ShowAllCities" />
+          <FunctionImportMapping FunctionImportName="ShowAllScheduleForCity" FunctionName="TicketDBModel.Store.ShowAllScheduleForCity" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
