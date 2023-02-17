@@ -205,13 +205,13 @@
                                     </RadioButton.RenderTransform>
                         </RadioButton>
 
-
                         <RadioButton Content="Female"
                                      Style="{StaticResource rbtStyle}">
                                     <RadioButton.RenderTransform>
                                         <ScaleTransform ScaleX="1.5" ScaleY="1.5"/>
                                     </RadioButton.RenderTransform>
                         </RadioButton>
+                        
                     </StackPanel>
 
                     <TextBlock Text="Birthday"

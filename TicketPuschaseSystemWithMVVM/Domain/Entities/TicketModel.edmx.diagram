@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c62fe1561e4c4657a9ddf6c65c3f39a6" Name="Diagram1">
+      <Diagram DiagramId="8dc482dc87d44254b62a42ca078c5cb6" Name="Diagram1">
         <EntityTypeShape EntityType="TicketDBModel.Airplane" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketDBModel.City" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketDBModel.Passenger" Width="1.5" PointX="5.25" PointY="5.25" IsExpanded="true" />
@@ -13,11 +13,11 @@
         <EntityTypeShape EntityType="TicketDBModel.Ticket" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="TicketDBModel.FK__Airplanes__Pilot__47DBAE45" ManuallyRouted="false" />
         <AssociationConnector Association="TicketDBModel.FK__Airplanes__Sched__48CFD27E" ManuallyRouted="false" />
-        <AssociationConnector Association="TicketDBModel.FK__Tickets__Airplan__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__Airplan__09A971A2" ManuallyRouted="false" />
         <AssociationConnector Association="TicketDBModel.FK__Schedules__CityI__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="TicketDBModel.FK__Tickets__CityId__5CD6CB2B" ManuallyRouted="false" />
-        <AssociationConnector Association="TicketDBModel.FK__Tickets__Passeng__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="TicketDBModel.FK__Tickets__Schedul__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__CityId__07C12930" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__Passeng__0A9D95DB" ManuallyRouted="false" />
+        <AssociationConnector Association="TicketDBModel.FK__Tickets__Schedul__08B54D69" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

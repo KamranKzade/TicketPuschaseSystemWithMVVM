@@ -98,18 +98,18 @@
       <DependentUpon>TicketModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Domain\Entities\TicketModel.Context.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>TicketModel.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Domain\Entities\TicketModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
       <DependentUpon>TicketModel.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
     <Compile Include="Domain\Entities\TicketModel.Designer.cs">
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
       <DependentUpon>TicketModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Domain\ViewModels\BaseViewModel.cs" />
@@ -195,6 +195,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\login.png" />
+    <Resource Include="Images\passenger.png" />
+    <Resource Include="Images\passengerCover.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Domain\Entities\TicketModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TicketModel.edmx</DependentUpon>
@@ -202,12 +207,9 @@
     </Content>
     <Content Include="Domain\Entities\TicketModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TicketModel.edmx</DependentUpon>
       <LastGenOutput>TicketModel.cs</LastGenOutput>
+      <DependentUpon>TicketModel.edmx</DependentUpon>
     </Content>
-    <Resource Include="Images\login.png" />
-    <Resource Include="Images\passenger.png" />
-    <Resource Include="Images\passengerCover.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
