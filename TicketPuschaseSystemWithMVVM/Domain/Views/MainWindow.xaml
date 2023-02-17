@@ -165,7 +165,8 @@
                         <Border Grid.Column="0"
                                 BorderBrush="Black"
                                 BorderThickness="5 5 0 5"/>
-                        <Grid Grid.Column="0" Name="myGrid">
+                        <Grid Grid.Column="0" 
+                              Name="myGrid">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="2*"/>
                                 <RowDefinition Height="1.5*"/>
@@ -293,7 +294,7 @@
                             Style="{StaticResource btnStyle}"
                             Content="Puschase"
                             Command="{Binding Puschase}"
-                            CommandParameter="{Binding ElementName=grid}"
+                            CommandParameter="{Binding ElementName=myGrid}"
                             />
                 </Grid>
 

@@ -165,13 +165,15 @@ CREATE TABLE Passengers(
 [BirthDay] datetime2 not null
 )
  
+GO
+
+INSERT INTO Passengers([Name],[Surname],[Gender],[BirthDay])
+VALUES('Kami','Karimzada',1,'1999-03-27')
 
 GO
 
 CREATE TABLE Tickets(
 [Id] int PRIMARY KEY IDENTITY(1,1) NOT NULL,
-[CityId] int not null FOREIGN KEY REFERENCES Cities(Id) ,
-[ScheduleId] int not null FOREIGN KEY REFERENCES Schedules(Id),
 [AirplaneId] int not null FOREIGN KEY REFERENCES Airplanes(Id),
 [PassengerId] int not null FOREIGN KEY REFERENCES Passengers(Id) ON DELETE CASCADE
 )

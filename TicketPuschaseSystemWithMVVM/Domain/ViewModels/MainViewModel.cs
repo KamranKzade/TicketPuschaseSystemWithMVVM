@@ -207,11 +207,39 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 
             Puschase = new RelayCommand((o) =>
             {
-                PassengerWindow window = new PassengerWindow();
+                //var grid = o as Grid;
+                //var gridCA = grid.Children[0] as Grid;
+                //var gridS = grid.Children[1] as Grid;
+                //
+                //var schedule = (gridS.Children[1] as ComboBox).SelectedItem;
+                //var city = (gridCA.Children[2] as ComboBox).SelectedItem;
+                //var airplane = (gridCA.Children[3] as ComboBox).SelectedItem;
 
-                var vm = new PassengerViewModel();
-                window.DataContext = vm;
-                window.ShowDialog();
+                using (var context = new TicketDBEntities())
+                {
+                    // var city = context.Cities.FirstOrDefault(c => c.Name == MySelectedItemForCities);
+
+                    var airplane = context.Airplanes.FirstOrDefault(a => a.Name == MySelectedItemForAirplanes);
+                    var schedule = airplane.Schedule;
+
+                    var nese = airplane.Schedule.CityId;
+
+
+                    Ticket ticket = new Ticket
+                    {
+                        CityId = airplane.Schedule.CityId, 
+                        AirplaneId = airplane.Id, 
+                        ScheduleId = schedule.Id,
+                        PassengerId = 1,
+                    };
+
+
+                    PassengerWindow window = new PassengerWindow();
+
+                    var vm = new PassengerViewModel(ticket);
+                    window.DataContext = vm;
+                    window.ShowDialog();
+                }
             });
         }
     }

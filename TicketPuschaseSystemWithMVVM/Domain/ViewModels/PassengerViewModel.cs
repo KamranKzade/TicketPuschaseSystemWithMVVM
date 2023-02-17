@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TicketPuschaseSystemWithMVVM.Commads;
+using TicketPuschaseSystemWithMVVM.Domain.Entities;
 
 namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 {
@@ -13,8 +14,12 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
         public RelayCommand MinimizeCommand { get; set; }
         public RelayCommand CloseCommand { get; set; }
 
-        public PassengerViewModel()
+
+        public PassengerViewModel(Ticket ticket)
         {
+
+            MessageBox.Show($" {ticket.CityId} -- {ticket.AirplaneId} -- {ticket.ScheduleId} -- {ticket.PassengerId}");
+
             MinimizeCommand = new RelayCommand((o) =>
             {
                 var window = o as Window;
