@@ -10,6 +10,8 @@
                 <ResourceDictionary Source="\ResourceDictionaries\TextBoxStyle.xaml"/>
                 <ResourceDictionary Source="\ResourceDictionaries\ComboBoxStyle.xaml"/>
                 <ResourceDictionary Source="\ResourceDictionaries\TextBlockStyle.xaml"/>
+                <ResourceDictionary Source="\ResourceDictionaries\RadioButtonStyle.xaml"/>
+                <ResourceDictionary Source="\ResourceDictionaries\TextboxForPassenger.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

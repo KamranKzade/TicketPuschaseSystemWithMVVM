@@ -9,6 +9,7 @@ using System.Windows;
 using System.Windows.Controls;
 using TicketPuschaseSystemWithMVVM.Commads;
 using TicketPuschaseSystemWithMVVM.Domain.Entities;
+using TicketPuschaseSystemWithMVVM.Domain.Views;
 
 namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 {
@@ -65,8 +66,9 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
 
 
 
-        public RelayCommand Minimize_Btn { get; set; }
+        public RelayCommand Puschase { get; set; }
         public RelayCommand Close_Btn { get; set; }
+        public RelayCommand Minimize_Btn { get; set; }
         public RelayCommand CityChangedCommand { get; set; }
         public RelayCommand ScheduleChangedCommand { get; set; }
         public RelayCommand AirplaneChangedCommand { get; set; }
@@ -200,8 +202,17 @@ namespace TicketPuschaseSystemWithMVVM.Domain.ViewModels
                     }
                 }
 
+
             });
 
+            Puschase = new RelayCommand((o) =>
+            {
+                PassengerWindow window = new PassengerWindow();
+
+                var vm = new PassengerViewModel();
+                window.DataContext = vm;
+                window.ShowDialog();
+            });
         }
     }
 }
